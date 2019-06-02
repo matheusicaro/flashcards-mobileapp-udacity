@@ -1,18 +1,18 @@
-import { getAllData, getItem, saveItem, STORAGE } from '../../storage'
+import { getAllData, getItem, saveItem } from '../../../storage'
 
 import { actionInitialData } from './Types'
-import DefaultData from '../../../utils/defaultData'
+import { DefaultData, createNewDeck, DECKS_KEY } from '../../../utils'
 
 export const initialData = dispatch => {
   getAllData()
     .then(data => {
-      if (data.length === 0 || !data.includes(STORAGE.DECKS_KEY)) {
+      if (data.length === 0 || !data.includes(DECKS_KEY)) {
         dispatch(actionInitialData(DefaultData.value))
-        const item = { key: DefaultData.key, value: JSON.stringify(DefaultData.value) }
-        saveItem(item)
+        const initialDecks = createNewDeck(DefaultData.value)
+        saveItem(initialDecks)
           .catch(error => console.log('ERROR...: saveItem IN initialData ->', error))
       } else {
-        getItem(STORAGE.DECKS_KEY)
+        getItem(DECKS_KEY)
           .then(item => dispatch(actionInitialData(JSON.parse(item))))
           .catch(error => console.log('ERROR...: getItem IN initialData ->', error))
       }
