@@ -9,37 +9,37 @@ import {
 
 export const ROUTES = {
   HOME: {
-    title: 'Home',
+    title: 'Home Screen',
     path: 'Home',
     screen: HomeScreen
   },
   HOW_WORK: {
-    title: 'How Work',
+    title: 'How Work Screen',
     path: 'How Work',
     screen: HowWorkScreen
   },
   ABOUT_ME: {
-    title: 'About Me',
+    title: 'About Me Screen',
     path: 'About Me',
     screen: AboutMeScreen
   },
   ADD_CARD: {
-    title: 'Add Card',
+    title: 'Add Card Screen',
     path: 'Add Card',
     screen: AddCardScreen
   },
   DECK: {
-    title: 'Deck',
+    title: 'Deck Screen',
     path: 'Deck',
     screen: DeckScreen
   },
   NEW_DECK: {
-    title: 'New Deck',
+    title: 'New Deck Screen',
     path: 'New Deck',
     screen: NewDeckScreen
   },
   QUIZ: {
-    title: 'Quiz',
+    title: 'Quiz Screen',
     path: 'Quiz',
     screen: QuizScreen
   }

@@ -1,4 +1,7 @@
-import { INITIAL_DATA, ADD_NEW_DECK } from './constants'
+import { INITIAL_DATA, ADD_NEW_DECK, ADD_NEW_CARD } from './constants'
+import { updateDecks } from './utils'
+
+let newState
 
 export const decks = (state = null, action) => {
   switch (action.type) {
@@ -8,7 +11,12 @@ export const decks = (state = null, action) => {
         ...action.payload
       }
     case ADD_NEW_DECK:
-      const newState = JSON.parse(action.payload)
+      newState = JSON.parse(action.payload.decks)
+      return {
+        ...newState
+      }
+    case ADD_NEW_CARD:
+      newState = updateDecks(action.payload, state)
       return {
         ...newState
       }

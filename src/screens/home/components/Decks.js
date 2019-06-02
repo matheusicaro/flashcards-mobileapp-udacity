@@ -1,9 +1,19 @@
 import React from 'react'
+import { connect } from 'react-redux'
+
 import { Ionicons } from '@expo/vector-icons'
 
 import { Card, ListItem } from 'react-native-elements'
+import { ROUTES } from '../../../navigation'
 
 export class Decks extends React.Component {
+  state = {}
+
+  navigateToDeck (deck) {
+    const paramsToNextScreen = { selectedDeck: deck }
+    this.props.navigate(ROUTES.ADD_CARD.path, paramsToNextScreen)
+  }
+
   render () {
     const itens = Object.values(this.props.itens)
 
@@ -12,8 +22,10 @@ export class Decks extends React.Component {
         {
           itens.map((item, index) => {
             const { title, questions } = item
+
             return (
               <ListItem
+                onPress={() => this.navigateToDeck(title)}
                 key={index}
                 roundAvatar
                 title={title}
@@ -28,3 +40,12 @@ export class Decks extends React.Component {
     )
   }
 }
+
+const mapStateToProps = ({ decks }) => ({ decks })
+
+const mapDispatchToProps = dispatch => ({ dispatch })
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Decks)

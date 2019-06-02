@@ -8,6 +8,8 @@ import {
   Button
 } from 'react-native'
 
+import { Divider } from 'react-native-elements'
+
 import { initialData } from './actions'
 import { ROUTES } from '../../navigation'
 import { HOME } from './Constants'
@@ -19,26 +21,26 @@ class HomeScreen extends React.Component {
     activedLoading: true
   }
 
-  UNSAFE_componentWillMount () {
+  UNSAFE_componentWillMount () { // eslint-disable-line camelcase
     if (this.props.decks === null) {
       this.props.dispatch(initialData)
     }
   }
 
-  onPressInHome (action) {
+  onPressInHomeScreen (action, selectedDeck) {
+    /* eslint-disable */
     if (action === HOME.ON_PRESS.ADD_NEW_DECK) {
       this.props.navigation.navigate(ROUTES.NEW_DECK.path)
-    }
+    } 
+      /* eslint-disable */
   }
 
   render () {
-    const { decks } = this.props
+    const { decks, navigation } = this.props
 
     if (!decks) {
       return <Text>C A R R E G A N D O</Text>
     }
-
-    console.log('in home', decks)
 
     return (
       <View style={styles.container}>
@@ -53,29 +55,15 @@ class HomeScreen extends React.Component {
           <Text style={styles.getStartedText}>exibe o número de cartões em cada baralho</Text>
         </View>
 
+        <Divider style={{ backgroundColor: 'blue' }} />
+
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-          <Decks itens={decks} />
+          <Decks itens={decks} navigate={navigation.navigate}/>
         </ScrollView>
 
-        <Button title='ADD NEW DECK' onPress={() => this.onPressInHome(HOME.ON_PRESS.ADD_NEW_DECK)} />
+        <Button title='ADD NEW DECK' onPress={() => this.onPressInHomeScreen(HOME.ON_PRESS.ADD_NEW_DECK)} />
 
         <View style={styles.getStartedContainer}>
-
-          {/* <View style={styles.getStartedContainer}>
-            <Text onPress={() => this.navigate(ROUTES.ADD_CARD.path)} >VIEW -> ADD CARD</Text>
-          </View>
-
-          <View style={styles.getStartedContainer}>
-            <Text onPress={() => this.navigate(ROUTES.DECK.path)} >VIEW ->  DECK</Text>
-          </View>
-
-          <View style={styles.getStartedContainer}>
-            <Text onPress={() => this.navigate(ROUTES.QUIZ.path)} >VIEW ->  QUIZ</Text>
-          </View>
-
-          <View style={styles.getStartedContainer}>
-            <Text onPress={() => this.navigate(ROUTES.NEW_DECK.path)} >VIEW ->  NEW DECK</Text>
-          </View> */}
 
         </View>
 

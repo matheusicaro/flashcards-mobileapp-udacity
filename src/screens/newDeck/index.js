@@ -12,7 +12,7 @@ import { Ionicons } from '@expo/vector-icons'
 
 import { ROUTES } from '../../navigation'
 import { NEW_DECK } from './Constants'
-
+import { createNewDeck } from '../../utils'
 import { createDeck } from './actions'
 
 import styles from '../styles'
@@ -20,7 +20,9 @@ import styles from '../styles'
 class NewDeckScreen extends React.Component {
   constructor (props) {
     super(props)
-    this.state = { deckTitle: '' }
+    this.state = {
+      deckTitle: ''
+    }
   }
 
   static navigationOptions = {
@@ -30,18 +32,21 @@ class NewDeckScreen extends React.Component {
   createNewDeck () {
     const { decks } = this.props
     const keyNewDeck = this.state.deckTitle
-    const newDeck = { [keyNewDeck]: { title: this.state.deckTitle } }
+    const newDeck = createNewDeck(keyNewDeck)
     this.props.dispatch(createDeck(newDeck, decks))
   }
 
-  onPressInNewDeck (action) {
+  onPressInNewDeckScreen (action) {
     if (action === NEW_DECK.CREATE_DECK) {
       this.createNewDeck()
-      this.props.navigation.navigate(ROUTES.HOME.path)
+      const paramsToNextScreen = { selectedDeck: this.state.deckTitle }
+      this.props.navigation.navigate(ROUTES.ADD_CARD.path, paramsToNextScreen)
     }
   }
 
   render () {
+    const disabledButton = (this.state.deckTitle === '')
+
     return (
       <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
@@ -60,7 +65,11 @@ class NewDeckScreen extends React.Component {
               leftIcon={<Ionicons name='md-bookmarks' size={32} />}
             />
 
-            <Button title='ADD NEW DECK' onPress={() => this.onPressInNewDeck(NEW_DECK.CREATE_DECK)} />
+            <Button
+              disabled={disabledButton}
+              title='ADD NEW DECK'
+              onPress={() => this.onPressInNewDeckScreen(NEW_DECK.CREATE_DECK)}
+            />
 
             <Text style={styles.getStartedText}>Uma opção de inserir o título do novo baralho</Text>
             <Text style={styles.getStartedText}>Uma opção de enviar o novo título do baralho e assim criar o baralho</Text>

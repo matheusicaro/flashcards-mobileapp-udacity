@@ -1,9 +1,9 @@
 import { NEW_DECK } from '../Constants'
 
-const actionCreateNewDeck = decks => {
+const actionCreateNewDeck = (newDeck, decks) => {
   return {
     type: NEW_DECK.CREATE_DECK,
-    payload: decks
+    payload: { newDeck, decks }
   }
 }
 
