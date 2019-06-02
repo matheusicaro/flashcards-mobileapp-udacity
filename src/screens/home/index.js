@@ -7,17 +7,30 @@ import {
   View
 } from 'react-native'
 
+import { ROUTES } from '../../navigation'
+import { initialData } from './actions'
+
 import styles from '../styles'
 
-import { ROUTES } from '../../navigation'
-
 class HomeScreen extends React.Component {
+  state = {
+    activedLoading: true
+  }
+
   navigate (path) {
     console.log('click', this.props)
     // this.props.navigation.navigate(path)
   }
 
+  UNSAFE_componentWillMount () {
+    if (this.props.decks === null) {
+      this.props.dispatch(initialData)
+    }
+  }
+
   render () {
+    console.log('props aqui...:', this.props.decks)
+
     return (
       <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
@@ -58,7 +71,7 @@ class HomeScreen extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({ redux: state })
+const mapStateToProps = ({ decks }) => ({ decks })
 
 const mapDispatchToProps = dispatch => ({ dispatch })
 

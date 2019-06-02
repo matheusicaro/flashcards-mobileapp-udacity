@@ -1,5 +1,5 @@
-import { home } from './screens/home/reducer'
+import { decks } from './screens/home/Reducer'
 
 export default {
-  testes: home
+  decks
 }

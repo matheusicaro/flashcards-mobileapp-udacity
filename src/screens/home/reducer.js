@@ -1,6 +1,6 @@
-import { HOME } from './constants'
+import { HOME } from './Constants'
 
-export const home = (state = null, action) => {
+export const decks = (state = null, action) => {
   switch (action.type) {
     case HOME.INITIAL_DATA:
       return {
