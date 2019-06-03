@@ -10,6 +10,7 @@ import {
 
 import { QUIZ } from './Constants'
 import { FinishedQuiz } from './components'
+import { HeaderBar } from '../../components'
 
 import styles from '../styles'
 
@@ -36,7 +37,7 @@ class QuizScreen extends React.Component {
   }
 
   render () {
-    const { selectedDeck } = this.props.navigation.state.params
+    const { selectedDeck, lastScreen } = this.props.navigation.state.params
     const questions = getThePropertyObject(this.props.decks, selectedDeck).questions
     const { questionNumber, showAnswer } = this.state
 
@@ -44,6 +45,13 @@ class QuizScreen extends React.Component {
 
     return (
       <View style={styles.container}>
+
+        <HeaderBar
+          titlePage={`QUIZ OF DECK ${selectedDeck}`}
+          navigate={this.props.navigation.navigate}
+          lastScreen={lastScreen}
+        />
+
         <View style={styles.welcomeContainer}>
           <Text>Questions { finishedQuestions ? questionNumber : questionNumber + 1 } of { questions.length } </Text>
         </View>

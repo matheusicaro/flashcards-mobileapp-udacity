@@ -30,7 +30,8 @@ class HomeScreen extends React.Component {
 
   onPressInHomeScreen (action, selectedDeck) {
     if (action === HOME.ON_PRESS.ADD_NEW_DECK) {
-      this.props.navigation.navigate(ROUTES.NEW_DECK.path)
+      const paramsToNextScreen = { lastScreen: ROUTES.HOME.path }
+      this.props.navigation.navigate(ROUTES.NEW_DECK.path, { paramsToNextScreen })
     }
   }
 
@@ -40,26 +41,19 @@ class HomeScreen extends React.Component {
     if (!decks) {
       return <Text>C A R R E G A N D O</Text>
     }
-
     return (
       <View style={styles.container}>
 
         <HeaderBar hideAllIcons />
 
-        <View style={styles.welcomeContainer}>
-          <Text>View da lista de baralhos (View HOME)</Text>
-        </View>
-
         <View style={styles.getStartedContainer}>
-          <Text style={styles.getStartedText}>View da lista de baralhos (View padrão)</Text>
-          <Text style={styles.getStartedText}>exibe o título de cada baralho</Text>
-          <Text style={styles.getStartedText}>exibe o número de cartões em cada baralho</Text>
+          <Text style={styles.getStartedText}>select a deck below or create your own deck and start the quiz.</Text>
         </View>
 
         <Divider style={{ backgroundColor: 'blue' }} />
 
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-          <Decks itens={decks} navigate={navigation.navigate} />
+          <Decks itens={decks} navigation={navigation} />
         </ScrollView>
 
         <Button title='ADD NEW DECK' onPress={() => this.onPressInHomeScreen(HOME.ON_PRESS.ADD_NEW_DECK)} />

@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { get as getThePropertyObject } from 'lodash'
 
 import {
-  ScrollView,
   Text,
   View,
   Button
@@ -11,6 +10,7 @@ import {
 import { Card, Input } from 'react-native-elements'
 
 import { addNewCard } from './actions'
+import { HeaderBar } from '../../components'
 
 import styles from '../styles'
 
@@ -33,45 +33,50 @@ class AddCardScreen extends React.Component {
 
   render () {
     const { decks } = this.props
-    const { selectedDeck } = this.props.navigation.state.params
+    const { selectedDeck, lastScreen } = this.props.navigation.state.params
     const disabledButton = (this.state.question === '' || this.state.answer === '')
 
     return (
       <View style={styles.container}>
-        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
 
-          <Card title={selectedDeck}>
-            <Text style={{ marginBottom: 10 }}>
+        <HeaderBar
+          titlePage={'ADD CARD'}
+          navigate={this.props.navigation.navigate}
+          lastScreen={lastScreen}
+          lastScreenParams={{ selectedDeck, lastScreen }}
+        />
+
+        <Card title={selectedDeck}>
+          <Text style={{ marginBottom: 10 }}>
               Total of cards in this deck is: { this.getSelectedDeck(selectedDeck, decks) }
-            </Text>
-          </Card>
+          </Text>
+        </Card>
 
-          <View style={styles.getStartedContainer}>
+        <View style={styles.getStartedContainer}>
 
-            <Input
-              label='QUESTION'
-              placeholder={'What is the question?'}
-              onChangeText={(text) => this.setState({ question: text })}
-              errorStyle={{ color: 'red' }}
-              value={this.state.question}
-            />
+          <Input
+            label='QUESTION'
+            placeholder={'What is the question?'}
+            onChangeText={(text) => this.setState({ question: text })}
+            errorStyle={{ color: 'red' }}
+            value={this.state.question}
+          />
 
-            <Input
-              label='ANSWER'
-              placeholder={'this should be the answer.'}
-              onChangeText={(text) => this.setState({ answer: text })}
-              errorStyle={{ color: 'red' }}
-              value={this.state.answer}
-            />
+          <Input
+            label='ANSWER'
+            placeholder={'this should be the answer.'}
+            onChangeText={(text) => this.setState({ answer: text })}
+            errorStyle={{ color: 'red' }}
+            value={this.state.answer}
+          />
 
-            <Button
-              disabled={disabledButton}
-              title='ADD NEW DECK'
-              onPress={() => this.onPressInAddCardScreen(selectedDeck)}
-            />
-          </View>
+          <Button
+            disabled={disabledButton}
+            title='ADD NEW DECK'
+            onPress={() => this.onPressInAddCardScreen(selectedDeck)}
+          />
+        </View>
 
-        </ScrollView>
       </View>
     )
   }

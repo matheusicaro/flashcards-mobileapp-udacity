@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { get as getThePropertyObject } from 'lodash'
 
 import {
-  ScrollView,
   Text,
   View,
   Button
@@ -12,6 +11,8 @@ import { Card } from 'react-native-elements'
 
 import { CARD } from './Constants'
 import { ROUTES } from '../../navigation'
+
+import { HeaderBar } from '../../components'
 
 import styles from '../styles'
 
@@ -22,7 +23,7 @@ class DeckScreen extends React.Component {
   }
 
   onPressInAddCardScreen (action, selectedDeck) {
-    const paramsToNextScreen = { selectedDeck }
+    const paramsToNextScreen = { selectedDeck, lastScreen: ROUTES.DECK.path }
 
     if (action === CARD.ON_PRESS.ADD_NEW_CARD) {
       this.props.navigation.navigate(ROUTES.ADD_CARD.path, paramsToNextScreen)
@@ -33,33 +34,32 @@ class DeckScreen extends React.Component {
 
   render () {
     const { decks } = this.props
-    const { selectedDeck } = this.props.navigation.state.params
+    const { selectedDeck, lastScreen } = this.props.navigation.state.params
 
     return (
       <View style={styles.container}>
-        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
 
-          <Card title={selectedDeck}>
-            <Text style={{ marginBottom: 10 }}>
+        <HeaderBar titlePage={'DECK DETAILS'} navigate={this.props.navigation.navigate} lastScreen={lastScreen} />
+
+        <Card title={selectedDeck}>
+          <Text style={{ marginBottom: 10 }}>
               Total of cards in this deck is: { this.getSelectedDeck(selectedDeck, decks) }
-            </Text>
-          </Card>
+          </Text>
+        </Card>
 
-          <View style={styles.getStartedContainer}>
+        <View style={styles.getStartedContainer}>
 
-            <Button
-              title='ADD CARD'
-              onPress={() => this.onPressInAddCardScreen(CARD.ON_PRESS.ADD_NEW_CARD, selectedDeck)}
-            />
+          <Button
+            title='ADD CARD'
+            onPress={() => this.onPressInAddCardScreen(CARD.ON_PRESS.ADD_NEW_CARD, selectedDeck)}
+          />
 
-            <Button
-              title='START QUIZ'
-              onPress={() => this.onPressInAddCardScreen(CARD.ON_PRESS.START_QUIZ, selectedDeck)}
-            />
+          <Button
+            title='START QUIZ'
+            onPress={() => this.onPressInAddCardScreen(CARD.ON_PRESS.START_QUIZ, selectedDeck)}
+          />
 
-          </View>
-
-        </ScrollView>
+        </View>
       </View>
     )
   }

@@ -2,17 +2,20 @@ import React from 'react'
 import { Header } from 'react-native-elements'
 import { Ionicons } from '@expo/vector-icons'
 import { View, Text } from 'react-native'
-import { ROUTES } from '../navigation'
 
+import { ROUTES } from '../navigation'
 import styles from '../screens/styles'
 
-export const HeaderBar = ({ navigate, backScreen, hideAllIcons }) => {
-  const onPressHeader = (path) => {
-    if (path === ROUTES.BACK_SCREEN) {
-      backScreen()
-    } else {
-      navigate(path)
-    }
+export const HeaderBar = ({
+  titlePage = 'MY FLASH CARDS',
+  navigate,
+  lastScreen,
+  hideAllIcons,
+  hideHome,
+  lastScreenParams = {}
+}) => {
+  const onPressHeader = () => {
+    navigate(lastScreen, lastScreenParams)
   }
 
   return (
@@ -20,12 +23,12 @@ export const HeaderBar = ({ navigate, backScreen, hideAllIcons }) => {
       <Header
         leftComponent={(hideAllIcons
           ? <Text />
-          : <Ionicons name='md-bookmarks' size={32} onPress={() => onPressHeader(ROUTES.HOME.path)} />
+          : <Ionicons name='md-arrow-back' color='white' size={32} onPress={() => onPressHeader()} />
         )}
-        centerComponent={{ text: 'MY FLASH CARDS', style: { color: '#fff' } }}
-        rightComponent={(hideAllIcons
+        centerComponent={{ text: titlePage, style: { color: '#fff' } }}
+        rightComponent={(hideAllIcons || hideHome
           ? <Text />
-          : <Ionicons name='md-bookmarks' size={32} onPress={() => onPressHeader(ROUTES.BACK_SCREEN)} />
+          : <Ionicons name='md-home' color='white' size={32} onPress={() => navigate(ROUTES.HOME.path)} />
         )}
       />
     </View>

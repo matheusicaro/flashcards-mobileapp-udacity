@@ -10,8 +10,8 @@ export class Decks extends React.Component {
   state = {}
 
   navigateToDeck (deck) {
-    const paramsToNextScreen = { selectedDeck: deck }
-    this.props.navigate(ROUTES.DECK.path, paramsToNextScreen)
+    const paramsToNextScreen = { selectedDeck: deck, lastScreen: ROUTES.HOME.path }
+    this.props.navigation.navigate(ROUTES.DECK.path, paramsToNextScreen)
   }
 
   render () {
