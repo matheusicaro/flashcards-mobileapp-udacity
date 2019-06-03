@@ -15,6 +15,7 @@ import { ROUTES } from '../../navigation'
 import { HOME } from './Constants'
 import styles from '../styles'
 import { Decks } from './components'
+import { HeaderBar } from '../../components'
 
 class HomeScreen extends React.Component {
   state = {
@@ -28,11 +29,9 @@ class HomeScreen extends React.Component {
   }
 
   onPressInHomeScreen (action, selectedDeck) {
-    /* eslint-disable */
     if (action === HOME.ON_PRESS.ADD_NEW_DECK) {
       this.props.navigation.navigate(ROUTES.NEW_DECK.path)
-    } 
-      /* eslint-disable */
+    }
   }
 
   render () {
@@ -44,6 +43,8 @@ class HomeScreen extends React.Component {
 
     return (
       <View style={styles.container}>
+
+        <HeaderBar hideAllIcons />
 
         <View style={styles.welcomeContainer}>
           <Text>View da lista de baralhos (View HOME)</Text>
@@ -58,14 +59,12 @@ class HomeScreen extends React.Component {
         <Divider style={{ backgroundColor: 'blue' }} />
 
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-          <Decks itens={decks} navigate={navigation.navigate}/>
+          <Decks itens={decks} navigate={navigation.navigate} />
         </ScrollView>
 
         <Button title='ADD NEW DECK' onPress={() => this.onPressInHomeScreen(HOME.ON_PRESS.ADD_NEW_DECK)} />
 
-        <View style={styles.getStartedContainer}>
-
-        </View>
+        <View style={styles.getStartedContainer} />
 
       </View>
     )

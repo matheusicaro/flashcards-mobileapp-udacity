@@ -1,11 +1,11 @@
-import { get } from 'lodash'
+import { get as getThePropertyObject } from 'lodash'
 import { saveItem } from '../../../storage'
 
 import { actionCreatNewCard } from './Types'
 import { addCardInDeck, formatToStorage, updateDecks } from '../../../utils'
 
 export const addNewCard = (card, selectedDeck, decks) => dispatch => {
-  const oldDeck = get(decks, selectedDeck)
+  const oldDeck = getThePropertyObject(decks, selectedDeck)
   const newDeck = addCardInDeck(card, oldDeck)
   const updatedDecks = updateDecks(newDeck, decks)
 

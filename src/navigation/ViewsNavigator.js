@@ -16,3 +16,7 @@ export const NewDeckStack = createStackNavigator({
 export const QuizStack = createStackNavigator({
   [ROUTES.QUIZ.path]: ROUTES.QUIZ.screen
 })
+
+export const HomeStack = createStackNavigator({
+  [ROUTES.HOME.path]: ROUTES.HOME.screen
+})

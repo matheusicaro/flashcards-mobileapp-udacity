@@ -1,16 +1,15 @@
-import MainTabNavigator from './MainTabNavigator'
-
 import {
   AddCardStack,
   QuizStack,
   NewDeckStack,
-  DeckStack
+  DeckStack,
+  HomeStack
 } from './ViewsNavigator'
 
 import { ROUTES } from './constants'
 export {
   ROUTES,
-  MainTabNavigator,
+  HomeStack,
   AddCardStack,
   QuizStack,
   NewDeckStack,

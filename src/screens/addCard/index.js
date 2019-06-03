@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { get as getObjectOf } from 'lodash'
+import { get as getThePropertyObject } from 'lodash'
 
 import {
   ScrollView,
@@ -21,7 +21,7 @@ class AddCardScreen extends React.Component {
   }
 
   getSelectedDeck (selectedDeck, decks) {
-    const { questions } = getObjectOf(decks, selectedDeck)
+    const { questions } = getThePropertyObject(decks, selectedDeck)
     return (questions ? questions.length : 0)
   }
 

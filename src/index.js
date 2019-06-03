@@ -5,7 +5,7 @@ import { createAppContainer, createSwitchNavigator } from 'react-navigation'
 
 import {
   ROUTES,
-  MainTabNavigator,
+  HomeStack,
   AddCardStack,
   DeckStack,
   NewDeckStack,
@@ -14,7 +14,7 @@ import {
 import Store from './Store'
 
 const Navigation = createAppContainer(createSwitchNavigator({
-  Main: MainTabNavigator,
+  [ROUTES.HOME.title]: HomeStack,
   [ROUTES.ADD_CARD.title]: AddCardStack,
   [ROUTES.DECK.title]: DeckStack,
   [ROUTES.NEW_DECK.title]: NewDeckStack,
