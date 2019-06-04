@@ -1,4 +1,4 @@
-import { HOME } from '../constants'
+import { HOME } from '../../../constants'
 
 const actionInitialData = decks => {
   return {

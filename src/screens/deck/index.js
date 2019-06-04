@@ -9,7 +9,7 @@ import {
 } from 'react-native'
 import { Card, Text as TextTitleCard, Divider } from 'react-native-elements'
 
-import { DECK } from './constants'
+import { DECK } from '../../constants'
 import { ROUTES } from '../../navigation'
 import { deleteDeck } from './actions'
 import { HeaderBar } from '../../components'
