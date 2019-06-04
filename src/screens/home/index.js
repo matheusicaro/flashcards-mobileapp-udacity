@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { CirclesLoader } from 'react-native-indicator'
 
 import {
   ScrollView,
@@ -22,7 +23,7 @@ class HomeScreen extends React.Component {
     activedLoading: true
   }
 
-  UNSAFE_componentWillMount () { // eslint-disable-line camelcase
+  componentWillMount () {
     if (this.props.decks === null) {
       this.props.dispatch(initialData)
     }
@@ -39,8 +40,13 @@ class HomeScreen extends React.Component {
     const { decks, navigation } = this.props
 
     if (!decks) {
-      return <Text>C A R R E G A N D O</Text>
+      return (
+        <View style={styles.container}>
+          <CirclesLoader />
+        </View>
+      )
     }
+
     return (
       <View style={styles.container}>
 
@@ -56,7 +62,7 @@ class HomeScreen extends React.Component {
           <Decks itens={decks} navigation={navigation} />
         </ScrollView>
 
-        <Button title='ADD NEW DECK' onPress={() => this.onPressInHomeScreen(HOME.ON_PRESS.ADD_NEW_DECK)} />
+        <Button title='ADD NEW DECK' onPress={() => this.onPressInHomeScreen(HOME.ON_PRESS.ADD_NEW_DECK)} color='#3D6DCC' />
 
         <View style={styles.getStartedContainer} />
 

@@ -33,7 +33,7 @@ class AddCardScreen extends React.Component {
 
   render () {
     const { decks } = this.props
-    const { selectedDeck, lastScreen } = this.props.navigation.state.params
+    const { selectedDeck, lastScreen, hideIconBackScreen } = this.props.navigation.state.params
     const disabledButton = (this.state.question === '' || this.state.answer === '')
 
     return (
@@ -44,6 +44,7 @@ class AddCardScreen extends React.Component {
           navigate={this.props.navigation.navigate}
           lastScreen={lastScreen}
           lastScreenParams={{ selectedDeck, lastScreen }}
+          hideBackScreen={hideIconBackScreen}
         />
 
         <Card title={selectedDeck}>

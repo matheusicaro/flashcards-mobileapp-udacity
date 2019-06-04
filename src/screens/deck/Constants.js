@@ -1,8 +1,9 @@
-import { ADD_NEW_CARD } from '../../constants'
+import { ADD_NEW_CARD, DELETE_CARD } from '../../constants'
 
-export const CARD = {
+export const DECK = {
   ON_PRESS: {
-    ADD_NEW_CARD: ADD_NEW_CARD,
-    START_QUIZ: 'START_QUIZ'
+    ADD_NEW_CARD,
+    START_QUIZ: 'START_QUIZ',
+    DELETE_CARD
   }
 }

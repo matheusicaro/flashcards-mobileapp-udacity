@@ -1,4 +1,4 @@
-import { INITIAL_DATA, ADD_NEW_DECK, ADD_NEW_CARD } from './constants'
+import { INITIAL_DATA, ADD_NEW_DECK, ADD_NEW_CARD, DELETE_CARD } from './constants'
 import { updateDecks } from './utils'
 
 let newState
@@ -19,6 +19,10 @@ export const decks = (state = null, action) => {
       newState = updateDecks(action.payload, state)
       return {
         ...newState
+      }
+    case DELETE_CARD:
+      return {
+        ...action.payload
       }
     default:
       return state

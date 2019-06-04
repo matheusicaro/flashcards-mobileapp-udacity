@@ -12,6 +12,7 @@ export const HeaderBar = ({
   lastScreen,
   hideAllIcons,
   hideHome,
+  hideBackScreen,
   lastScreenParams = {}
 }) => {
   const onPressHeader = () => {
@@ -21,7 +22,7 @@ export const HeaderBar = ({
   return (
     <View style={styles.codeHighlightText}>
       <Header
-        leftComponent={(hideAllIcons
+        leftComponent={(hideAllIcons || hideBackScreen
           ? <Text />
           : <Ionicons name='md-arrow-back' color='white' size={32} onPress={() => onPressHeader()} />
         )}

@@ -50,6 +50,7 @@ class QuizScreen extends React.Component {
           titlePage={`QUIZ OF DECK ${selectedDeck}`}
           navigate={this.props.navigation.navigate}
           lastScreen={lastScreen}
+          hideBackScreen={finishedQuestions}
         />
 
         <View style={styles.welcomeContainer}>

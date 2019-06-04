@@ -2,13 +2,12 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import {
-  ScrollView,
   Text,
   View,
   Button
 } from 'react-native'
 import { Input } from 'react-native-elements'
-import { Ionicons } from '@expo/vector-icons'
+import { HeaderBar } from '../../components'
 
 import { ROUTES } from '../../navigation'
 import { NEW_DECK } from './Constants'
@@ -39,43 +38,43 @@ class NewDeckScreen extends React.Component {
   onPressInNewDeckScreen (action) {
     if (action === NEW_DECK.CREATE_DECK) {
       this.createNewDeck()
-      const paramsToNextScreen = { selectedDeck: this.state.deckTitle }
+      const paramsToNextScreen = { selectedDeck: this.state.deckTitle, hideIconBackScreen: true }
       this.props.navigation.navigate(ROUTES.ADD_CARD.path, paramsToNextScreen)
     }
   }
 
   render () {
     const disabledButton = (this.state.deckTitle === '')
+    const { lastScreen } = this.props.navigation.state.params
 
     return (
       <View style={styles.container}>
-        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
 
-          <View style={styles.welcomeContainer}>
-            <Text>View do novo baralho</Text>
-          </View>
+        <HeaderBar titlePage={'CREATE NEW DECK'} navigate={this.props.navigation.navigate} lastScreen={lastScreen} />
 
-          <View style={styles.getStartedContainer}>
+        <View style={styles.welcomeContainer}>
+          <Text>View do novo baralho</Text>
+        </View>
 
-            <Input
-              label='Title of new deck'
-              placeholder={'My new Deck'}
-              onChangeText={(text) => this.setState({ deckTitle: text })}
-              errorStyle={{ color: 'red' }}
-              leftIcon={<Ionicons name='md-bookmarks' size={32} />}
-            />
+        <View style={styles.getStartedContainer}>
 
-            <Button
-              disabled={disabledButton}
-              title='ADD NEW DECK'
-              onPress={() => this.onPressInNewDeckScreen(NEW_DECK.CREATE_DECK)}
-            />
+          <Input
+            label='Title of new deck'
+            placeholder={'My new Deck'}
+            onChangeText={(text) => this.setState({ deckTitle: text })}
+            errorStyle={{ color: 'red' }}
+          />
 
-            <Text style={styles.getStartedText}>Uma opção de inserir o título do novo baralho</Text>
-            <Text style={styles.getStartedText}>Uma opção de enviar o novo título do baralho e assim criar o baralho</Text>
-          </View>
+          <Button
+            disabled={disabledButton}
+            title='ADD NEW DECK'
+            onPress={() => this.onPressInNewDeckScreen(NEW_DECK.CREATE_DECK)}
+          />
 
-        </ScrollView>
+          <Text style={styles.getStartedText}>Uma opção de inserir o título do novo baralho</Text>
+          <Text style={styles.getStartedText}>Uma opção de enviar o novo título do baralho e assim criar o baralho</Text>
+        </View>
+
       </View>
     )
   }

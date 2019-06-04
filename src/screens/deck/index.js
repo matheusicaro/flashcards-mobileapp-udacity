@@ -9,9 +9,9 @@ import {
 } from 'react-native'
 import { Card } from 'react-native-elements'
 
-import { CARD } from './Constants'
+import { DECK } from './Constants'
 import { ROUTES } from '../../navigation'
-
+import { deleteDeck } from './actions'
 import { HeaderBar } from '../../components'
 
 import styles from '../styles'
@@ -22,13 +22,16 @@ class DeckScreen extends React.Component {
     return (questions ? questions.length : 0)
   }
 
-  onPressInAddCardScreen (action, selectedDeck) {
+  onPressInAddCardScreen (action, selectedDeck, decks) {
     const paramsToNextScreen = { selectedDeck, lastScreen: ROUTES.DECK.path }
 
-    if (action === CARD.ON_PRESS.ADD_NEW_CARD) {
+    if (action === DECK.ON_PRESS.ADD_NEW_CARD) {
       this.props.navigation.navigate(ROUTES.ADD_CARD.path, paramsToNextScreen)
-    } else if (action === CARD.ON_PRESS.START_QUIZ) {
+    } else if (action === DECK.ON_PRESS.START_QUIZ) {
       this.props.navigation.navigate(ROUTES.QUIZ.path, paramsToNextScreen)
+    } else if (action === DECK.ON_PRESS.DELETE_CARD) {
+      this.props.dispatch(deleteDeck(selectedDeck, decks))
+      this.props.navigation.navigate(ROUTES.HOME.path, paramsToNextScreen)
     }
   }
 
@@ -51,12 +54,17 @@ class DeckScreen extends React.Component {
 
           <Button
             title='ADD CARD'
-            onPress={() => this.onPressInAddCardScreen(CARD.ON_PRESS.ADD_NEW_CARD, selectedDeck)}
+            onPress={() => this.onPressInAddCardScreen(DECK.ON_PRESS.ADD_NEW_CARD, selectedDeck)}
           />
 
           <Button
             title='START QUIZ'
-            onPress={() => this.onPressInAddCardScreen(CARD.ON_PRESS.START_QUIZ, selectedDeck)}
+            onPress={() => this.onPressInAddCardScreen(DECK.ON_PRESS.START_QUIZ, selectedDeck)}
+          />
+
+          <Button
+            title='DELETE CARD'
+            onPress={() => this.onPressInAddCardScreen(DECK.ON_PRESS.DELETE_CARD, selectedDeck, decks)}
           />
 
         </View>
