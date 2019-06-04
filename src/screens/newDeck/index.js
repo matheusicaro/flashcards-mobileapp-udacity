@@ -4,9 +4,9 @@ import { connect } from 'react-redux'
 import {
   Text,
   View,
-  Button
+  TouchableOpacity
 } from 'react-native'
-import { Input } from 'react-native-elements'
+import { Input, Text as TextButton } from 'react-native-elements'
 import { HeaderBar } from '../../components'
 
 import { ROUTES } from '../../navigation'
@@ -14,7 +14,7 @@ import { NEW_DECK } from './Constants'
 import { createNewDeck } from '../../utils'
 import { createDeck } from './actions'
 
-import styles from '../styles'
+import styles, { COLORS } from '../styles'
 
 class NewDeckScreen extends React.Component {
   constructor (props) {
@@ -53,10 +53,10 @@ class NewDeckScreen extends React.Component {
         <HeaderBar titlePage={'CREATE NEW DECK'} navigate={this.props.navigation.navigate} lastScreen={lastScreen} />
 
         <View style={styles.welcomeContainer}>
-          <Text>View do novo baralho</Text>
+          <Text style={{ ...styles.getStartedText, marginBottom: '10%' }}>Add a title to a deck and then add cards.</Text>
         </View>
 
-        <View style={styles.getStartedContainer}>
+        <View style={{ ...styles.getStartedContainer, marginTop: '10%' }}>
 
           <Input
             label='Title of new deck'
@@ -65,14 +65,14 @@ class NewDeckScreen extends React.Component {
             errorStyle={{ color: 'red' }}
           />
 
-          <Button
+          <TouchableOpacity
             disabled={disabledButton}
-            title='ADD NEW DECK'
+            style={{ ...styles.buttons, marginTop: '15%', backgroundColor: COLORS.BACKGROUND }}
             onPress={() => this.onPressInNewDeckScreen(NEW_DECK.CREATE_DECK)}
-          />
+          >
+            <TextButton h4 style={{ color: '#fff', textAlign: 'center' }}>ADD NEW DECK</TextButton>
+          </TouchableOpacity>
 
-          <Text style={styles.getStartedText}>Uma opção de inserir o título do novo baralho</Text>
-          <Text style={styles.getStartedText}>Uma opção de enviar o novo título do baralho e assim criar o baralho</Text>
         </View>
 
       </View>

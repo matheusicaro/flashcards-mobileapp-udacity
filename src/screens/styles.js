@@ -3,11 +3,16 @@ import {
   StyleSheet
 } from 'react-native'
 
+export const COLORS = {
+  BACKGROUND: '#3D6DCC'
+}
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff'
   },
+  buttons: { padding: '3%', width: '80%' },
   developmentModeText: {
     marginBottom: 20,
     color: 'rgba(0,0,0,0.4)',

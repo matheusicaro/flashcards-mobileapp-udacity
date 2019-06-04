@@ -5,8 +5,11 @@ import { connect } from 'react-redux'
 import {
   Text,
   View,
-  Button
+  Button,
+  TouchableOpacity
 } from 'react-native'
+
+import { Text as TextTitle } from 'react-native-elements'
 
 import { QUIZ } from './Constants'
 import { FinishedQuiz } from './components'
@@ -36,6 +39,15 @@ class QuizScreen extends React.Component {
     this.setState({ showAnswer: !showAnswer })
   }
 
+  reestartQuiz () {
+    this.setState({
+      questionNumber: 0,
+      showAnswer: false,
+      totalCorrect: 0,
+      totalIncorrect: 0
+    })
+  }
+
   render () {
     const { selectedDeck, lastScreen } = this.props.navigation.state.params
     const questions = getThePropertyObject(this.props.decks, selectedDeck).questions
@@ -47,9 +59,10 @@ class QuizScreen extends React.Component {
       <View style={styles.container}>
 
         <HeaderBar
-          titlePage={`QUIZ OF DECK ${selectedDeck}`}
+          titlePage={`QUIZ: ${selectedDeck.toUpperCase()}`}
           navigate={this.props.navigation.navigate}
           lastScreen={lastScreen}
+          lastScreenParams={{ selectedDeck, lastScreen }}
           hideBackScreen={finishedQuestions}
         />
 
@@ -59,48 +72,76 @@ class QuizScreen extends React.Component {
 
         { finishedQuestions &&
           (
-            <FinishedQuiz
-              correct={this.state.totalCorrect}
-              incorrect={this.state.totalIncorrect}
-              navigate={this.props.navigation.navigate}
-              deck={selectedDeck}
-            />
+            <View style={{ alignContent: 'center' }}>
+              <View style={{ alignItems: 'center', width: '80%' }}
+              >
+                <Button
+                  style={{ width: '80%' }}
+                  title='RESTART QUIZ'
+                  onPress={() => this.reestartQuiz()}
+                />
+              </View>
+              <View style={{ alignItems: 'center', marginBottom: '5%', marginTop: '5%', width: '80%' }}
+              >
+                <Button
+                  title='BACK TO DECK'
+                  onPress={() => this.props.navigation.navigate(lastScreen, { selectedDeck, lastScreen })}
+                />
+              </View>
+              <FinishedQuiz
+                correct={this.state.totalCorrect}
+                incorrect={this.state.totalIncorrect}
+                navigate={this.props.navigation.navigate}
+                navigateParams={{ selectedDeck, lastScreen }}
+                deck={selectedDeck}
+                reestartQuiz={this.reestartQuiz}
+              />
+            </View>
           )
         }
 
-        { !showAnswer && !finishedQuestions &&
+        <View style={{ height: '100%', width: '100%', alignItems: 'center' }}>
+          { !showAnswer && !finishedQuestions &&
           (
-            <View style={styles.getStartedContainer}>
-              <Text style={styles.getStartedText}>{ questions[questionNumber].question }</Text>
+            <View style={{ marginTop: '10%', width: '80%' }}>
+              <TextTitle h3 style={{ textAlign: 'center', marginBottom: '5%' }}>{ questions[questionNumber].question }</TextTitle>
               <Text style={styles.getStartedText} onPress={() => this.show(showAnswer)}> Show Answer </Text>
             </View>
           )
-        }
+          }
 
-        { showAnswer && !finishedQuestions &&
+          { showAnswer && !finishedQuestions &&
           (
-            <View style={styles.getStartedContainer}>
-              <Text style={styles.getStartedText}>{ questions[questionNumber].answer }</Text>
+            <View style={{ marginTop: '10%', width: '80%' }}>
+              <TextTitle h3 style={{ textAlign: 'center', marginBottom: '5%', color: '#3D6DCC' }}>{ questions[questionNumber].answer }</TextTitle>
               <Text style={styles.getStartedText} onPress={() => this.show(showAnswer)}> Show Question </Text>
             </View>
           )
-        }
+          }
 
-        { !finishedQuestions &&
+          { !finishedQuestions &&
           (
-            <View style={styles.getStartedContainer}>
-              <Button
-                title='CORRECT'
-                onPress={() => this.onPressInQuizScreen(QUIZ.ON_PRESS.CORRECT)}
-              />
+            <View style={{ width: '80%', ...styles.getStartedContainer }}>
 
-              <Button
-                title='ICONRRECT'
+              <TouchableOpacity
+                style={{ ...styles.buttons, marginTop: '7%', backgroundColor: 'green', width: '100%' }}
+                onPress={() => this.onPressInQuizScreen(QUIZ.ON_PRESS.CORRECT)}
+              >
+                <TextTitle h4 style={{ color: '#fff', textAlign: 'center' }}>CORRECT</TextTitle>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                style={{ ...styles.buttons, marginTop: '7%', backgroundColor: 'red', width: '100%' }}
                 onPress={() => this.onPressInQuizScreen(QUIZ.ON_PRESS.INCORRET)}
-              />
+              >
+                <TextTitle h4 style={{ color: '#fff', textAlign: 'center' }}>ICONRRECT</TextTitle>
+              </TouchableOpacity>
+
             </View>
           )
-        }
+          }
+        </View>
+
       </View>
     )
   }

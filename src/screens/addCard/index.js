@@ -5,14 +5,14 @@ import { get as getThePropertyObject } from 'lodash'
 import {
   Text,
   View,
-  Button
+  TouchableOpacity
 } from 'react-native'
-import { Card, Input } from 'react-native-elements'
+import { Card, Input, Text as TextTitleCard, Divider } from 'react-native-elements'
 
 import { addNewCard } from './actions'
 import { HeaderBar } from '../../components'
 
-import styles from '../styles'
+import styles, { COLORS } from '../styles'
 
 class AddCardScreen extends React.Component {
   state = {
@@ -47,35 +47,45 @@ class AddCardScreen extends React.Component {
           hideBackScreen={hideIconBackScreen}
         />
 
-        <Card title={selectedDeck}>
-          <Text style={{ marginBottom: 10 }}>
-              Total of cards in this deck is: { this.getSelectedDeck(selectedDeck, decks) }
+        <Card>
+          <TextTitleCard h4 style={{ textAlign: 'center' }}>{selectedDeck}</TextTitleCard>
+          <Divider style={{ backgroundColor: 'blue', marginTop: '2%', marginBottom: '10%' }} />
+
+          <Text style={{ marginBottom: 10, textAlign: 'center' }}>
+              Total of cards in this deck is: ( { this.getSelectedDeck(selectedDeck, decks) } )
           </Text>
         </Card>
 
-        <View style={styles.getStartedContainer}>
+        <View style={{ marginTop: '10%', ...styles.getStartedContainer }}>
+          <View style={{ width: '100%' }}>
+            <Input
+              label='QUESTION'
+              placeholder={'What is the question?'}
+              onChangeText={(text) => this.setState({ question: text })}
+              errorStyle={{ color: 'red' }}
+              value={this.state.question}
+            />
+          </View>
 
-          <Input
-            label='QUESTION'
-            placeholder={'What is the question?'}
-            onChangeText={(text) => this.setState({ question: text })}
-            errorStyle={{ color: 'red' }}
-            value={this.state.question}
-          />
+          <View style={{ marginTop: '10%', width: '100%' }}>
 
-          <Input
-            label='ANSWER'
-            placeholder={'this should be the answer.'}
-            onChangeText={(text) => this.setState({ answer: text })}
-            errorStyle={{ color: 'red' }}
-            value={this.state.answer}
-          />
+            <Input
+              label='ANSWER'
+              placeholder={'this should be the answer.'}
+              onChangeText={(text) => this.setState({ answer: text })}
+              errorStyle={{ color: 'red' }}
+              value={this.state.answer}
+            />
+          </View>
 
-          <Button
+          <TouchableOpacity
             disabled={disabledButton}
-            title='ADD NEW DECK'
+            style={{ ...styles.buttons, marginTop: '15%', backgroundColor: COLORS.BACKGROUND }}
             onPress={() => this.onPressInAddCardScreen(selectedDeck)}
-          />
+          >
+            <TextTitleCard h4 style={{ color: '#fff', textAlign: 'center' }}>ADD IN DECK</TextTitleCard>
+          </TouchableOpacity>
+
         </View>
 
       </View>

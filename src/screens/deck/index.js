@@ -5,21 +5,25 @@ import { get as getThePropertyObject } from 'lodash'
 import {
   Text,
   View,
-  Button
+  TouchableOpacity
 } from 'react-native'
-import { Card } from 'react-native-elements'
+import { Card, Text as TextTitleCard, Divider } from 'react-native-elements'
 
 import { DECK } from './Constants'
 import { ROUTES } from '../../navigation'
 import { deleteDeck } from './actions'
 import { HeaderBar } from '../../components'
 
-import styles from '../styles'
+import styles, { COLORS } from '../styles'
 
 class DeckScreen extends React.Component {
+  state = {
+    totalQuestionInDeck: null
+  }
   getSelectedDeck (selectedDeck, decks) {
     const { questions } = getThePropertyObject(decks, selectedDeck)
-    return (questions ? questions.length : 0)
+    const total = questions ? questions.length : 0
+    this.setState({ totalQuestionInDeck: total })
   }
 
   onPressInAddCardScreen (action, selectedDeck, decks) {
@@ -37,35 +41,52 @@ class DeckScreen extends React.Component {
 
   render () {
     const { decks } = this.props
+    console.log(this.props.navigation.state.params)
     const { selectedDeck, lastScreen } = this.props.navigation.state.params
+    const { totalQuestionInDeck } = this.state
+
+    if (decks && totalQuestionInDeck === null) {
+      this.getSelectedDeck(selectedDeck, decks)
+    }
 
     return (
       <View style={styles.container}>
 
         <HeaderBar titlePage={'DECK DETAILS'} navigate={this.props.navigation.navigate} lastScreen={lastScreen} />
 
-        <Card title={selectedDeck}>
-          <Text style={{ marginBottom: 10 }}>
-              Total of cards in this deck is: { this.getSelectedDeck(selectedDeck, decks) }
+        <Card>
+          <TextTitleCard h4 style={{ textAlign: 'center' }}>{ selectedDeck }</TextTitleCard>
+          <Divider style={{ backgroundColor: 'blue', marginTop: '2%', marginBottom: '10%' }} />
+
+          <Text style={{ marginBottom: 10, textAlign: 'center' }}>
+              Total of cards in this deck is: ( { totalQuestionInDeck } )
           </Text>
         </Card>
 
         <View style={styles.getStartedContainer}>
 
-          <Button
-            title='ADD CARD'
+          <TouchableOpacity
+            style={{ ...styles.buttons, marginTop: '15%', backgroundColor: COLORS.BACKGROUND }}
             onPress={() => this.onPressInAddCardScreen(DECK.ON_PRESS.ADD_NEW_CARD, selectedDeck)}
-          />
+          >
+            <TextTitleCard h4 style={{ color: '#fff', textAlign: 'center' }}>ADD CARD</TextTitleCard>
+          </TouchableOpacity>
 
-          <Button
-            title='START QUIZ'
-            onPress={() => this.onPressInAddCardScreen(DECK.ON_PRESS.START_QUIZ, selectedDeck)}
-          />
+          { !(totalQuestionInDeck === 0) &&
+            <TouchableOpacity
+              style={{ ...styles.buttons, marginTop: '7%', backgroundColor: 'green' }}
+              onPress={() => this.onPressInAddCardScreen(DECK.ON_PRESS.START_QUIZ, selectedDeck)}
+            >
+              <TextTitleCard h4 style={{ color: '#fff', textAlign: 'center' }}>START QUIZ</TextTitleCard>
+            </TouchableOpacity>
+          }
 
-          <Button
-            title='DELETE CARD'
+          <TouchableOpacity
+            style={{ ...styles.buttons, marginTop: '7%', backgroundColor: 'red' }}
             onPress={() => this.onPressInAddCardScreen(DECK.ON_PRESS.DELETE_CARD, selectedDeck, decks)}
-          />
+          >
+            <TextTitleCard h4 style={{ color: '#fff', textAlign: 'center' }}>DELETE CARD</TextTitleCard>
+          </TouchableOpacity>
 
         </View>
       </View>

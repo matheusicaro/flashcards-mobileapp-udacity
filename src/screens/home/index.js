@@ -6,15 +6,15 @@ import {
   ScrollView,
   Text,
   View,
-  Button
+  TouchableOpacity
 } from 'react-native'
 
-import { Divider } from 'react-native-elements'
+import { Text as TextButton } from 'react-native-elements'
 
 import { initialData } from './actions'
 import { ROUTES } from '../../navigation'
 import { HOME } from './Constants'
-import styles from '../styles'
+import styles, { COLORS } from '../styles'
 import { Decks } from './components'
 import { HeaderBar } from '../../components'
 
@@ -32,7 +32,7 @@ class HomeScreen extends React.Component {
   onPressInHomeScreen (action, selectedDeck) {
     if (action === HOME.ON_PRESS.ADD_NEW_DECK) {
       const paramsToNextScreen = { lastScreen: ROUTES.HOME.path }
-      this.props.navigation.navigate(ROUTES.NEW_DECK.path, { paramsToNextScreen })
+      this.props.navigation.navigate(ROUTES.NEW_DECK.path, paramsToNextScreen)
     }
   }
 
@@ -41,7 +41,7 @@ class HomeScreen extends React.Component {
 
     if (!decks) {
       return (
-        <View style={styles.container}>
+        <View style={{ justifyContent: 'center', left: '45%', ...styles.container }}>
           <CirclesLoader />
         </View>
       )
@@ -53,18 +53,19 @@ class HomeScreen extends React.Component {
         <HeaderBar hideAllIcons />
 
         <View style={styles.getStartedContainer}>
-          <Text style={styles.getStartedText}>select a deck below or create your own deck and start the quiz.</Text>
+          <Text style={{ ...styles.getStartedText, marginBottom: '5%' }}>select a deck below or create your own deck and start the quiz.</Text>
         </View>
 
-        <Divider style={{ backgroundColor: 'blue' }} />
-
-        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+        <ScrollView style={{ ...styles.container, maxHeight: '50%' }} contentContainerStyle={styles.contentContainer}>
           <Decks itens={decks} navigation={navigation} />
         </ScrollView>
 
-        <Button title='ADD NEW DECK' onPress={() => this.onPressInHomeScreen(HOME.ON_PRESS.ADD_NEW_DECK)} color='#3D6DCC' />
-
-        <View style={styles.getStartedContainer} />
+        <TouchableOpacity
+          style={{ ...styles.buttons, left: '10%', marginTop: '5%', backgroundColor: COLORS.BACKGROUND }}
+          onPress={() => this.onPressInHomeScreen(HOME.ON_PRESS.ADD_NEW_DECK)}
+        >
+          <TextButton h4 style={{ color: '#fff', textAlign: 'center' }}>ADD NEW DECK</TextButton>
+        </TouchableOpacity>
 
       </View>
     )

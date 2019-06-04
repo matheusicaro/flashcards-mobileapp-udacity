@@ -1,5 +1,6 @@
 import React from 'react'
-import { Platform, StatusBar, StyleSheet, View, Text, Animated } from 'react-native'
+import { Platform, StatusBar, StyleSheet, View, Animated } from 'react-native'
+import { Text } from 'react-native-elements'
 import { App as AppContainer } from './src'
 import { setLocalNotification } from './src/utils'
 
@@ -11,7 +12,7 @@ export default class App extends React.Component {
 
   componentDidMount () {
     const { opacity } = this.state
-    Animated.timing(opacity, { toValue: 1, duration: 1500 }).start()
+    Animated.timing(opacity, { toValue: 1, duration: 2000 }).start()
     setLocalNotification()
   }
 
@@ -25,8 +26,8 @@ export default class App extends React.Component {
 
       return (
         <View style={styles.container}>
-          <Animated.Image style={[{ opacity }]} source={require('./src/assets/images/robot-prod.png')} />
-          <Text style={styles.getStartedText}>Welcome to FlashCards an application for Udacity course</Text>
+          <Animated.Image style={[styles.image, { opacity }]} source={require('./src/assets/images/robot-prod.png')} />
+          <Text h4 style={styles.text}>Welcome to FlashCards an application for Udacity course</Text>
         </View>
       )
     } else {
@@ -47,9 +48,13 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'column',
+    textAlign:'center',
     justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: '#fff'
+  },
+  image:{ left: '40%' },
+  text:{
+    textAlign:'center',
+    marginTop: '5%'
   }
 })
