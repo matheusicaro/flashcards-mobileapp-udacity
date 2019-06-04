@@ -1,4 +1,4 @@
-import { DECK } from '../Constants'
+import { DECK } from '../constants'
 
 const actionDeleteDeck = decks => {
   return {

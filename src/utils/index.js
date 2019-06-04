@@ -1,3 +1,3 @@
-export * from './DefaultData'
+export * from './defaultData'
 export * from './Decks'
 export * from './Notification'

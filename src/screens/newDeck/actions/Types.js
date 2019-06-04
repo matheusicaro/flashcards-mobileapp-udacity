@@ -1,4 +1,4 @@
-import { NEW_DECK } from '../Constants'
+import { NEW_DECK } from '../constants'
 
 const actionCreateNewDeck = (newDeck, decks) => {
   return {

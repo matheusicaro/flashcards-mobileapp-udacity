@@ -13,7 +13,7 @@ import { Text as TextButton } from 'react-native-elements'
 
 import { initialData } from './actions'
 import { ROUTES } from '../../navigation'
-import { HOME } from './Constants'
+import { HOME } from './constants'
 import styles, { COLORS } from '../styles'
 import { Decks } from './components'
 import { HeaderBar } from '../../components'

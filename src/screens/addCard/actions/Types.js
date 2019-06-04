@@ -1,4 +1,4 @@
-import { ADD_CARD } from '../Constants'
+import { ADD_CARD } from '../constants'
 
 const actionCreatNewCard = (newCard) => {
   return {

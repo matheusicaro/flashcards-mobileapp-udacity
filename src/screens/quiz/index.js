@@ -11,7 +11,7 @@ import {
 
 import { Text as TextTitle } from 'react-native-elements'
 
-import { QUIZ } from './Constants'
+import { QUIZ } from './constants'
 import { FinishedQuiz } from './components'
 import { HeaderBar } from '../../components'
 

@@ -10,7 +10,7 @@ import { Input, Text as TextButton } from 'react-native-elements'
 import { HeaderBar } from '../../components'
 
 import { ROUTES } from '../../navigation'
-import { NEW_DECK } from './Constants'
+import { NEW_DECK } from './constants'
 import { createNewDeck } from '../../utils'
 import { createDeck } from './actions'
 
