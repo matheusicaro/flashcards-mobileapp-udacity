@@ -7,7 +7,7 @@ export const COLORS = {
   BACKGROUND: '#3D6DCC'
 }
 
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff'
@@ -105,5 +105,3 @@ const styles = StyleSheet.create({
     color: '#2e78b7'
   }
 })
-
-export default styles

@@ -9,12 +9,11 @@ import {
 } from 'react-native'
 import { Card, Text as TextTitleCard, Divider } from 'react-native-elements'
 
-import { DECK } from '../../constants'
 import { ROUTES } from '../../navigation'
 import { deleteDeck } from './actions'
 import { HeaderBar } from '../../components'
 
-import styles, { COLORS } from '../../constants/styles'
+import { styles, COLORS, DECK } from '../../constants'
 
 class DeckScreen extends React.Component {
   state = {
@@ -46,12 +45,17 @@ class DeckScreen extends React.Component {
 
   render () {
     const { decks } = this.props
-    const { selectedDeck, lastScreen } = this.props.navigation.state.params
+    const { selectedDeck, lastScreen, hideBackScreen } = this.props.navigation.state.params
     const { totalQuestionInDeck } = this.state
     return (
       <View style={styles.container}>
 
-        <HeaderBar titlePage={'DECK DETAILS'} navigate={this.props.navigation.navigate} lastScreen={lastScreen} />
+        <HeaderBar
+          titlePage={'DECK DETAILS'}
+          navigate={this.props.navigation.navigate}
+          lastScreen={lastScreen}
+          hideBackScreen={hideBackScreen}
+        />
 
         <Card>
           <TextTitleCard h4 style={{ textAlign: 'center' }}>{ selectedDeck }</TextTitleCard>

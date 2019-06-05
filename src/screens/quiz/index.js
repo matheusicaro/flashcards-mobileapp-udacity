@@ -5,18 +5,16 @@ import { connect } from 'react-redux'
 import {
   Text,
   View,
-  Button,
   TouchableOpacity
 } from 'react-native'
 
 import { Text as TextTitle } from 'react-native-elements'
 
-import { QUIZ } from '../../constants'
 import { FinishedQuiz } from './components'
 import { HeaderBar } from '../../components'
 import { clearLocalNotification, setLocalNotification } from '../../utils'
 
-import styles from '../../constants/styles'
+import { styles, QUIZ } from '../../constants'
 
 class QuizScreen extends React.Component {
   state = {

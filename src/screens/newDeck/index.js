@@ -9,12 +9,11 @@ import {
 import { Input, Text as TextButton } from 'react-native-elements'
 import { HeaderBar } from '../../components'
 
-import { NEW_DECK } from '../../constants'
 import { ROUTES } from '../../navigation'
 import { createNewDeck } from '../../utils'
 import { createDeck } from './actions'
 
-import styles, { COLORS } from '../../constants/styles'
+import { styles, COLORS, NEW_DECK } from '../../constants'
 
 class NewDeckScreen extends React.Component {
   constructor (props) {
@@ -38,8 +37,8 @@ class NewDeckScreen extends React.Component {
   onPressInNewDeckScreen (action) {
     if (action === NEW_DECK.CREATE_DECK) {
       this.createNewDeck()
-      const paramsToNextScreen = { selectedDeck: this.state.deckTitle, hideIconBackScreen: true }
-      this.props.navigation.navigate(ROUTES.ADD_CARD.path, paramsToNextScreen)
+      const paramsToNextScreen = { selectedDeck: this.state.deckTitle, hideBackScreen: true }
+      this.props.navigation.navigate(ROUTES.DECK.path, paramsToNextScreen)
     }
   }
 

@@ -12,7 +12,7 @@ import { Card, Input, Text as TextTitleCard, Divider } from 'react-native-elemen
 import { addNewCard } from './actions'
 import { HeaderBar } from '../../components'
 
-import styles, { COLORS } from '../../constants/styles'
+import { styles, COLORS } from '../../constants'
 
 class AddCardScreen extends React.Component {
   state = {
