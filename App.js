@@ -12,7 +12,7 @@ export default class App extends React.Component {
 
   componentDidMount () {
     const { opacity } = this.state
-    Animated.timing(opacity, { toValue: 1, duration: 2000 }).start()
+    Animated.timing(opacity, { toValue: 1, duration: 2500 }).start()
     setLocalNotification()
   }
 
@@ -20,14 +20,15 @@ export default class App extends React.Component {
     if (!this.state.isLoadingComplete) {
       setTimeout(() => {
         this._handleFinishLoading()
-      }, 2500)
+      }, 3500)
 
       const { opacity } = this.state
 
       return (
         <View style={styles.container}>
-          <Animated.Image style={[styles.image, { opacity }]} source={require('./src/assets/images/robot-prod.png')} />
+          <Animated.Image style={[styles.image, { opacity }]} source={require('./src/assets/images/loadingCard.png')} />
           <Text h4 style={styles.text}>Welcome to FlashCards an application for Udacity course</Text>
+          <Text h3 style={{ ...styles.text, color: 'red' }}>@matheusicaro2</Text>
         </View>
       )
     } else {
@@ -48,13 +49,13 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    textAlign:'center',
+    textAlign: 'center',
     justifyContent: 'center',
     backgroundColor: '#fff'
   },
-  image:{ left: '40%' },
-  text:{
-    textAlign:'center',
+  image: { left: '25%' },
+  text: {
+    textAlign: 'center',
     marginTop: '5%'
   }
 })

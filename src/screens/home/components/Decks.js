@@ -4,7 +4,7 @@ import { CirclesLoader } from 'react-native-indicator'
 
 import { Ionicons } from '@expo/vector-icons'
 
-import { Card, ListItem } from 'react-native-elements'
+import { Card, ListItem, Text } from 'react-native-elements'
 import { ROUTES } from '../../../navigation'
 
 export class Decks extends React.Component {
@@ -44,6 +44,12 @@ export class Decks extends React.Component {
 
     return (
       <Card containerStyle={{ padding: 10 }} >
+        { itens.length === 0 && (
+          <Text h4 style={{ textAlign: 'center' }}>
+            There are no Decks on your dashboard. Add a deck clicking below.
+          </Text>
+        )
+        }
         {
           itens.map((item, index) => {
             const { title, questions } = item

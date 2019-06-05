@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "tesntando native",
+    "name": "mobile-flashcards",
     "slug": "mobile-flashcards",
     "privacy": "public",
     "sdkVersion": "32.0.0",
@@ -10,9 +10,9 @@
     ],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./src/assets/images/icon.png",
     "splash": {
-      "image": "./assets/images/splash.png",
+      "image": "./src/assets/images/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },

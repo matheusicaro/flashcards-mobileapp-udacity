@@ -14,12 +14,13 @@ import { ROUTES } from '../../navigation'
 import { deleteDeck } from './actions'
 import { HeaderBar } from '../../components'
 
-import styles, { COLORS } from '../styles'
+import styles, { COLORS } from '../../constants/styles'
 
 class DeckScreen extends React.Component {
   state = {
     totalQuestionInDeck: null
   }
+
   getSelectedDeck (selectedDeck, decks) {
     const { questions } = getThePropertyObject(decks, selectedDeck)
     const total = questions ? questions.length : 0
@@ -39,16 +40,14 @@ class DeckScreen extends React.Component {
     }
   }
 
+  componentDidMount () {
+    this.getSelectedDeck(this.props.navigation.state.params.selectedDeck, this.props.decks)
+  }
+
   render () {
     const { decks } = this.props
-    console.log(this.props.navigation.state.params)
     const { selectedDeck, lastScreen } = this.props.navigation.state.params
     const { totalQuestionInDeck } = this.state
-
-    if (decks && totalQuestionInDeck === null) {
-      this.getSelectedDeck(selectedDeck, decks)
-    }
-
     return (
       <View style={styles.container}>
 

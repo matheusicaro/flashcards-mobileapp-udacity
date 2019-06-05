@@ -4,7 +4,6 @@ import { Ionicons } from '@expo/vector-icons'
 import { View, Text } from 'react-native'
 
 import { ROUTES } from '../navigation'
-import styles from '../screens/styles'
 
 export const HeaderBar = ({
   titlePage = 'MY FLASH CARDS',

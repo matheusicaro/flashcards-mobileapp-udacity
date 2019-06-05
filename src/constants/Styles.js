@@ -1,12 +1,26 @@
 import {
-  StyleSheet,
-  Platform
+  Platform,
+  StyleSheet
 } from 'react-native'
 
-export const styles = StyleSheet.create({
+export const COLORS = {
+  BACKGROUND: '#3D6DCC'
+}
+
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff'
+  },
+  buttons: { padding: '3%', width: '80%' },
+  buttonsFlexRow: {
+    margin: '2%',
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'nowrap',
+    justifyContent: 'center',
+    alignItems: 'baseline',
+    alignContent: 'center'
   },
   developmentModeText: {
     marginBottom: 20,
@@ -91,3 +105,5 @@ export const styles = StyleSheet.create({
     color: '#2e78b7'
   }
 })
+
+export default styles

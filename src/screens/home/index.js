@@ -14,9 +14,10 @@ import { Text as TextButton } from 'react-native-elements'
 import { initialData } from './actions'
 import { ROUTES } from '../../navigation'
 import { HOME } from '../../constants'
-import styles, { COLORS } from '../styles'
+import styles, { COLORS } from '../../constants/styles'
 import { Decks } from './components'
 import { HeaderBar } from '../../components'
+import { existNotification, setLocalNotification } from '../../utils'
 
 class HomeScreen extends React.Component {
   state = {
@@ -33,6 +34,12 @@ class HomeScreen extends React.Component {
     if (action === HOME.ON_PRESS.ADD_NEW_DECK) {
       const paramsToNextScreen = { lastScreen: ROUTES.HOME.path }
       this.props.navigation.navigate(ROUTES.NEW_DECK.path, paramsToNextScreen)
+    }
+  }
+
+  componentDidMount () {
+    if (!existNotification()) {
+      setLocalNotification()
     }
   }
 

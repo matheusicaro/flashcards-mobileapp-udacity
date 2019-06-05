@@ -9,11 +9,12 @@ import {
 import { Input, Text as TextButton } from 'react-native-elements'
 import { HeaderBar } from '../../components'
 
-import { ROUTES, NEW_DECK } from '../../constants'
+import { NEW_DECK } from '../../constants'
+import { ROUTES } from '../../navigation'
 import { createNewDeck } from '../../utils'
 import { createDeck } from './actions'
 
-import styles, { COLORS } from '../styles'
+import styles, { COLORS } from '../../constants/styles'
 
 class NewDeckScreen extends React.Component {
   constructor (props) {

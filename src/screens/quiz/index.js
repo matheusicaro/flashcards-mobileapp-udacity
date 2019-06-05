@@ -14,8 +14,9 @@ import { Text as TextTitle } from 'react-native-elements'
 import { QUIZ } from '../../constants'
 import { FinishedQuiz } from './components'
 import { HeaderBar } from '../../components'
+import { clearLocalNotification, setLocalNotification } from '../../utils'
 
-import styles from '../styles'
+import styles from '../../constants/styles'
 
 class QuizScreen extends React.Component {
   state = {
@@ -48,6 +49,11 @@ class QuizScreen extends React.Component {
     })
   }
 
+  componentWillMount () {
+    clearLocalNotification()
+      .then(setLocalNotification)
+  }
+
   render () {
     const { selectedDeck, lastScreen } = this.props.navigation.state.params
     const questions = getThePropertyObject(this.props.decks, selectedDeck).questions
@@ -68,26 +74,25 @@ class QuizScreen extends React.Component {
 
         <View style={styles.welcomeContainer}>
           <Text>Questions { finishedQuestions ? questionNumber : questionNumber + 1 } of { questions.length } </Text>
+          {finishedQuestions && (
+            <View style={styles.buttonsFlexRow}>
+              <TouchableOpacity
+                style={{ backgroundColor: 'black' }}
+                onPress={() => this.reestartQuiz()}
+              ><Text style={{ color: 'white' }}> RESTART QUIZ </Text></TouchableOpacity>
+
+              <TouchableOpacity
+                style={{ marginLeft: '2%', backgroundColor: 'black' }}
+                onPress={() => this.props.navigation.navigate(lastScreen, { selectedDeck, lastScreen })}
+              ><Text style={{ color: 'white' }}> BACK TO DECK </Text></TouchableOpacity>
+            </View>
+          )}
+
         </View>
 
         { finishedQuestions &&
           (
             <View style={{ alignContent: 'center' }}>
-              <View style={{ alignItems: 'center', width: '80%' }}
-              >
-                <Button
-                  style={{ width: '80%' }}
-                  title='RESTART QUIZ'
-                  onPress={() => this.reestartQuiz()}
-                />
-              </View>
-              <View style={{ alignItems: 'center', marginBottom: '5%', marginTop: '5%', width: '80%' }}
-              >
-                <Button
-                  title='BACK TO DECK'
-                  onPress={() => this.props.navigation.navigate(lastScreen, { selectedDeck, lastScreen })}
-                />
-              </View>
               <FinishedQuiz
                 correct={this.state.totalCorrect}
                 incorrect={this.state.totalIncorrect}

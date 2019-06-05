@@ -4,7 +4,7 @@ import {
 } from 'react-native'
 import { Text as TextTitle } from 'react-native-elements'
 
-import styles from '../../styles'
+import styles from '../../../constants/styles'
 
 export const FinishedQuiz = ({ correct, incorrect, navigate, selectedDeck, reestartQuiz, navigateParams }) => {
   const total = correct + incorrect
