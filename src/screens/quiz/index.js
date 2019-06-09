@@ -32,6 +32,9 @@ class QuizScreen extends React.Component {
       const { totalIncorrect, questionNumber } = this.state
       this.setState({ totalIncorrect: (totalIncorrect + 1), questionNumber: (questionNumber + 1) })
     }
+
+    // AQUI É SETADO PARA A RESPOSTA DO PROXIMO CARD, SEJA OCUTADA
+    this.show(true)
   }
 
   show (showAnswer) {
@@ -47,9 +50,11 @@ class QuizScreen extends React.Component {
     })
   }
 
-  componentWillMount () {
-    clearLocalNotification()
-      .then(setLocalNotification)
+  reagentNotification (isQuizFinished) {
+    if (isQuizFinished) {
+      clearLocalNotification()
+        .then(setLocalNotification)
+    }
   }
 
   render () {
@@ -92,11 +97,12 @@ class QuizScreen extends React.Component {
           (
             <View style={{ alignContent: 'center' }}>
               <FinishedQuiz
+                toRescheduleQuiz={() => this.reagentNotification(true)}
                 correct={this.state.totalCorrect}
                 incorrect={this.state.totalIncorrect}
                 navigate={this.props.navigation.navigate}
                 navigateParams={{ selectedDeck, lastScreen }}
-                deck={selectedDeck}
+                deck={selectedDeck.toUpperCase()}
                 reestartQuiz={this.reestartQuiz}
               />
             </View>
