@@ -1,0 +1,29 @@
+{
+    "frontend": {
+        "name": "React",
+        "color": "#03A9F4",
+        "tags": [
+            "Redux",
+            "Redux-thunk"
+        ]
+    },
+    "backend": {
+        "name": "JavaScript",
+        "color": "#eadb1a",
+        "tags": [
+            "React Native",
+            "Expo",
+            "Jest"
+        ]
+    },
+    "others": {
+        "name": "React Native",
+        "color": "#4e8dff",
+        "tags": [
+            "Expo",
+            "React Native Elements",
+            "React Native Indicator",
+            "React Navigation"
+        ]
+    }
+}
