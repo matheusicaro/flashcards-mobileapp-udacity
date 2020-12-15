@@ -2,18 +2,18 @@
     "profile": {
     "pt": {
       "kind": "Estudos",
-      "name": "My Reads - Uma biblioteca online usando React Web App para estudos no curso da Udacity",
-      "intro": "Flashcards Mobile, é um aplicativo móvel (Android ou iOS) que permite aos usuários estudar uma coleção de flashcards. Com o aplicativo, os usuários podem criar diferentes categorias de flashcards chamados \"decks\", adicionar flashcards a esses decks e realizar um quiz nesses decks."
+      "name": "Flashcards - Aplicativo Móvel para Estudos com Notas de Lembretes",
+      "intro": "Flashcards Mobile, é um aplicativo móvel (Android ou iOS) que permite aos usuários estudar uma coleção de flashcards desenvolvido no curso de Desenvolvedor React na Udacity. Com o aplicativo, os usuários podem criar diferentes categorias de flashcards chamados \"decks\", adicionar flashcards a esses decks e realizar um quiz nesses decks."
     },
     "en": {
       "kind": "Studies",
-      "name": "Flash Cards - Mobile App to Studies With Cards in Udacity's Course",
-      "intro": "Flashcards Mobile, is a mobile app (Android or iOS) that allows users to study a collection of flashcards. With the app, users can create different categories of flashcards called \"decks\", add flashcards to those decks, and make the quizes in these decks."
+      "name": "Flashcards - Mobile App to Studies With Reminder Cards",
+      "intro": "Flashcards Mobile, is a mobile app (Android or iOS) that allows users to study a collection of flashcards developed in the React Developer course at Udacity. With the app, users can create different categories of flashcards called \"decks\", add flashcards to those decks, and make the quizes in these decks."
     },
     "es": {
       "kind": "Estudios",
-      "name": "Tarjetas flash: Aplicación Móvil para Estudios con Tarjetas en el Curso de Udacity",
-      "intro": "Flashcards Mobile, es una aplicación móvil (Android o iOS) que permite a los usuarios estudiar una colección de flashcards. Con la aplicación, los usuarios pueden crear diferentes categorías de tarjetas didácticas llamadas \"decks\", agregar tarjetas didácticas a esos mazos y hacer las pruebas en estos mazos."
+      "name": "Flashcards - Aplicación Móvil para Estudios con Tarjetas de Recordatorio",
+      "intro": "Flashcards Mobile, es una aplicación móvil (Android o iOS) que permite a los usuarios estudiar una colección de flashcards desarrollado en el curso React Developer en Udacity. Con la aplicación, los usuarios pueden crear diferentes categorías de tarjetas didácticas llamadas \"decks\", agregar tarjetas didácticas a esos mazos y hacer las pruebas en estos mazos."
     }
   },
    "stack": {
