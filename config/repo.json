@@ -1,36 +1,52 @@
 {
-   "frontend":[
+    "profile": {
+    "pt": {
+      "kind": "Estudos",
+      "name": "My Reads - Uma biblioteca online usando React Web App para estudos no curso da Udacity",
+      "intro": "Flashcards Mobile, é um aplicativo móvel (Android ou iOS) que permite aos usuários estudar uma coleção de flashcards. Com o aplicativo, os usuários podem criar diferentes categorias de flashcards chamados \"decks\", adicionar flashcards a esses decks e realizar um quiz nesses decks."
+    },
+    "en": {
+      "kind": "Studies",
+      "name": "Flash Cards - Mobile App to Studies With Cards in Udacity's Course",
+      "intro": "Flashcards Mobile, is a mobile app (Android or iOS) that allows users to study a collection of flashcards. With the app, users can create different categories of flashcards called \"decks\", add flashcards to those decks, and make the quizes in these decks."
+    },
+    "es": {
+      "kind": "Estudios",
+      "name": "Tarjetas flash: Aplicación Móvil para Estudios con Tarjetas en el Curso de Udacity",
+      "intro": "Flashcards Mobile, es una aplicación móvil (Android o iOS) que permite a los usuarios estudiar una colección de flashcards. Con la aplicación, los usuarios pueden crear diferentes categorías de tarjetas didácticas llamadas \"decks\", agregar tarjetas didácticas a esos mazos y hacer las pruebas en estos mazos."
+    }
+  },
+   "stack": {
+    "frontend": [
       {
-         "name":"React",
-         "color":"#03A9F4",
-         "tags":[
-            "Redux",
-            "Redux-thunk",
-            "React Native"
-         ]
+        "name": "React",
+        "tags": [
+          "Redux",
+          "Redux-thunk",
+          "React Native"
+        ]
       }
-   ],
-   "backend":[
+    ],
+    "backend": [
       {
-         "name":"JavaScript",
-         "color":"#eadb1a",
-         "tags":[
-            "React Native",
-            "Expo",
-            "Jest"
-         ]
+        "name": "JavaScript",
+        "tags": [
+          "React Native",
+          "Expo",
+          "Jest"
+        ]
       }
-   ],
-   "others":[
+    ],
+    "others": [
       {
-         "name":"React Native",
-         "color":"#4e8dff",
-         "tags":[
-            "Expo",
-            "React Native Elements",
-            "React Native Indicator",
-            "React Navigation"
-         ]
+        "name": "React Native",
+        "tags": [
+          "Expo",
+          "React Native Elements",
+          "React Native Indicator",
+          "React Navigation"
+        ]
       }
-   ]
+    ]
+  }
 }
