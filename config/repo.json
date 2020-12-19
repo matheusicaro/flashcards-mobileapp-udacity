@@ -22,21 +22,10 @@
         "name": "React",
         "tags": [
           "Redux",
-          "Redux-thunk",
-          "React Native"
+          "Redux-thunk"
         ]
       }
-    ],
-    "backend": [
-      {
-        "name": "React Native",
-        "tags": [
-          "JavaScript",
-          "Expo",
-          "Jest"
-        ]
-      }
-    ],
+    ]
     "others": [
       {
         "name": "React Native",
