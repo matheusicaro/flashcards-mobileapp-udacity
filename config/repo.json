@@ -29,9 +29,9 @@
     ],
     "backend": [
       {
-        "name": "JavaScript",
+        "name": "React Native",
         "tags": [
-          "React Native",
+          "JavaScript",
           "Expo",
           "Jest"
         ]
