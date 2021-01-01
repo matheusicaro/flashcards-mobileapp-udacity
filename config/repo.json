@@ -5,6 +5,11 @@
       "name": "Flashcards - Aplicativo Móvel para Estudos com Notas de Lembretes",
       "intro": "Flashcards Mobile, é um aplicativo móvel (Android ou iOS) que permite aos usuários estudar uma coleção de flashcards desenvolvido no curso de Desenvolvedor React na Udacity. Com o aplicativo, os usuários podem criar diferentes categorias de flashcards chamados \"decks\", adicionar flashcards a esses decks e realizar um quiz nesses decks."
     },
+    "fr": {
+      "kind": "Études",
+      "name": "Flashcards - Application mobile pour les études avec notes de rappel",
+      "intro": "Flashcards Mobile, est une application mobile (Android ou iOS) qui permet aux utilisateurs d'étudier une collection de cartes mémoire développées dans le cours React Developer chez Udacity. Avec l'application, les utilisateurs peuvent créer différentes catégories de cartes mémoire appelées \"decks\", ajoutez des flashcards à ces decks et répondez à un quiz sur ces decks."
+    },
     "en": {
       "kind": "Studies",
       "name": "Flashcards - Mobile App to Studies With Reminder Cards",
