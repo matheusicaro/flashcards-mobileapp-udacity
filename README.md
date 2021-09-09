@@ -1,4 +1,5 @@
 # prj-flashcards-udacity
+[![license](https://img.shields.io/github/license/DAVFoundation/captain-n3m0.svg?style=flat-square)](https://github.com/matheusicaro/flashcards-mobileapp-udacity/blob/master/LICENSE)
 
 Flashcards Mobile, is a mobile app (Android or iOS) that allows users to study a collection of flashcards. With the app, users can create different categories of flashcards called "decks", add flashcards to those decks, and make the quizes in these decks.
 
