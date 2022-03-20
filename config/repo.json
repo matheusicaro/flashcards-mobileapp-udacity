@@ -21,6 +21,7 @@
       "intro": "Flashcards Mobile, es una aplicación móvil (Android o iOS) que permite a los usuarios estudiar una colección de flashcards desarrollado en el curso React Developer en Udacity. Con la aplicación, los usuarios pueden crear diferentes categorías de tarjetas didácticas llamadas \"decks\", agregar tarjetas didácticas a esos mazos y hacer las pruebas en estos mazos."
     }
   },
+  "tags": ["React", "Redux", "React Native", "JavaScript", "Mobile"],
   "stack": {
     "frontend": [
       {
